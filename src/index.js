@@ -10,19 +10,84 @@ app.use(cors());
 const users = [];
 
 function checksExistsUserAccount(request, response, next) {
-  // Complete aqui
+  
+  const { username  } = request.headers
+  const user = users.find(user => user.username  === username )
+
+  request.user = user
+
+  if(!user){  return response.status(404).json({Error: "Usuario não existe!!!" })}
+
+  return next()
 }
 
 function checksCreateTodosUserAvailability(request, response, next) {
-  // Complete aqui
+  // Validar se ele tem um plano pro
+  // Validar se tem menos de 10 todos vinculados a ele.
+
+  const { user } = request;
+
+  if (user.pro === false && user.todos.length >= 10) {
+    return response.status(403).json({Error: "Mais de 10 tarefas foram encontradas, assine o pro para não passar com essa palhaçada" })
+  }
+
+  return next();
 }
 
 function checksTodoExists(request, response, next) {
-  // Complete aqui
+  // Validar se usuario existe
+  // Validar se UUID está correto
+  // Validar se tarefa existe
+  // Passar user e to do para request
+
+
+  const { username } = request.headers;
+  const { id } = request.params;
+
+  const user = users.find((user) => user.username === username);
+
+  if (!user) {
+    return response.status(404).json({Error: "Usuario não existe !!!" });
+  }
+
+  // function checkIfValidUUID(str) {
+  //   const regexExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
+  //   return regexExp.test(str)
+  // }
+  // if (!checkIfValidUUID(id)) {
+  //   return response.status(400).send( "Esse id não é valido !!!" );
+  // }
+
+  if (!validate(id)) {
+    return response.status(400).json({Error: "Esse id não é valido !!!"});
+  }
+
+  const todo = user.todos.find((todo) => todo.id === id);
+
+  if (!todo) {
+    return response.status(404).json({Error: "Essa tarefa não existe"});
+  }
+
+  request.user = user;
+  request.todo = todo;
+
+  return next();
 }
 
 function findUserById(request, response, next) {
-  // Complete aqui
+  // Validar se Usuario Existe 
+  // Passar user para request
+
+  const { id } = request.params;
+
+  const user = users.find((user) => user.id === id);
+
+  if (!user) {
+    return response.status(404).json({Error: "Este usuario não existe !!!" });
+  }
+
+  request.user = user;
+  return next();
 }
 
 app.post('/users', (request, response) => {
@@ -117,6 +182,9 @@ app.delete('/todos/:id', checksExistsUserAccount, checksTodoExists, (request, re
 
   user.todos.splice(todoIndex, 1);
 
+
+  
+
   return response.status(204).send();
 });
 
@@ -127,4 +195,4 @@ module.exports = {
   checksCreateTodosUserAvailability,
   checksTodoExists,
   findUserById
-};
+}
