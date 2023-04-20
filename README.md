@@ -5,7 +5,7 @@ Este é o primeiro chapter no Desafio 02 da Rocket Ignite, um programa de capaci
 
 ### Objetivo:
 
-- O objetivo deste desafio é implementar uma API RESTful em Node.js e TypeScript para gerenciamento de tarefas (to-do list).
+- O objetivo deste desafio é implementar uma API RESTful em Node.js, TypeScript, Express e com testes usando o Jest para gerenciamento de tarefas (to-do list).
 
 ---
 
