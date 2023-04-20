@@ -5,8 +5,19 @@ Este é o primeiro chapter no desafio 02 da Rocket Ignite, um programa de capaci
 
 ### Objetivo:
 
-- O objetivo deste desafio é implementar uma API RESTful em Node.js, TypeScript, Express e com testes usando o Jest para gerenciamento de tarefas (to-do list).
+- O objetivo deste desafio é implementar uma API RESTful com Node.js, TypeScript, Express e com testes usando o Jest para gerenciamento de tarefas (to-do list).
 
+### Deve ser possivel:
+
+- Criação de um usuário com `name` e `username`.
+- Criar um novo *todo*;
+- Listar todos os *todos*;
+- Alterar o `title` e `deadline` de um *todo* existente;
+- Marcar um *todo* como feito;
+- Excluir um *todo*;
+- Deve ser possível alternar entre plano grátis e PRO.
+- No plano grátis deve ser possível que o usuário possa criar até no máximo dez todos e no plano Pro seja possível criar todos ilimitados
+- Testar as middlewares
 ---
 
 ### Para rodar o projeto:
