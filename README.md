@@ -59,6 +59,24 @@ http://localhost:3333
 ---
 A API implementada durante este chapter possui os seguintes endpoints:
 
-![image](https://user-images.githubusercontent.com/91347602/233255492-f74df8d2-ffc6-4f75-9a93-3d0ce39d1d82.png)
+### GET `/repositories`
+
+###### A rota deve retornar uma lista contendo todos os repositórios cadastrados.
+
+### POST `/repositories`
+
+###### A rota deve receber `title`, `url` e `techs` pelo corpo da requisição e retornar um objeto com as informações do repositório criado e um status `201`.
+
+### PUT `/repositories/:id`
+
+###### A rota deve receber `title`, `url` e `techs` pelo corpo da requisição e o `id` do repositório que deve ser atualizado pelo parâmetro da rota. Deve alterar apenas as informações recebidas pelo corpo da requisição e retornar esse repositório atualizado.
+
+### DELETE `/repositories/:id`
+
+###### A rota deve receber, pelo parâmetro da rota, o `id` do repositório que deve ser excluído e retornar um status `204` após a exclusão.
+
+### POST `/repositories/:id/like`
+
+###### A rota deve receber, pelo parâmetro da rota, o `id` do repositório que deve receber o like e retornar o repositório com a quantidade de likes atualizada.
 
 Cada endpont é representado deve enviar um conjunto de parametros para funcionar corretamente.
