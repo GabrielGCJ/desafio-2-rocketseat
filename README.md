@@ -1,4 +1,4 @@
-# Desafio 2 (Desafio 02: Chapter I)
+# Desafio 02: Chapter I
 Este é o primeiro chapter no desafio 02 da Rocket Ignite, um programa de capacitação intensiva em desenvolvimento de software.
 
 ![image](https://user-images.githubusercontent.com/91347602/232902040-1eb12147-f163-4dd8-bf03-0d2cd96cefb7.png)
